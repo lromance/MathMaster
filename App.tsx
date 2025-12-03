@@ -3,9 +3,10 @@ import { MathProblem, OperationType, TrainingProblem, TrainingMode } from './typ
 import { generateProblem, generateTrainingProblem } from './utils/mathLogic';
 import MathBoard from './components/MathBoard';
 import MentalTraining from './components/MentalTraining';
-import { Play, Settings, Calculator, RefreshCw, Trophy, Brain, Zap, ArrowLeft } from 'lucide-react';
+import MultiplicationTables from './components/MultiplicationTables';
+import { Play, Settings, Calculator, RefreshCw, Trophy, Brain, Zap, ArrowLeft, LayoutGrid } from 'lucide-react';
 
-type AppSection = 'MENU' | 'MATH_BOARD' | 'TRAINING_MENU' | 'TRAINING_GAME';
+type AppSection = 'MENU' | 'MATH_BOARD' | 'TRAINING_MENU' | 'TRAINING_GAME' | 'MULTIPLICATION';
 
 function App() {
   const [section, setSection] = useState<AppSection>('MENU');
@@ -168,7 +169,12 @@ function App() {
     );
   }
 
-  // 5. Main Menu (Default)
+  // 5. Multiplication Tables
+  if (section === 'MULTIPLICATION') {
+    return <MultiplicationTables onExit={exitToMenu} />;
+  }
+
+  // 6. Main Menu (Default)
   return (
     <div className="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-3xl shadow-xl border-b-8 border-blue-200 p-8 text-center">
@@ -191,6 +197,13 @@ function App() {
             className="w-full bg-orange-500 hover:bg-orange-600 text-white text-xl font-bold py-4 rounded-2xl shadow-lg border-b-4 border-orange-700 active:border-b-0 active:translate-y-1 transition-all flex items-center justify-center gap-3"
           >
             <span className="text-3xl">-</span> Restas
+          </button>
+
+          <button 
+            onClick={() => setSection('MULTIPLICATION')}
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white text-xl font-bold py-4 rounded-2xl shadow-lg border-b-4 border-blue-700 active:border-b-0 active:translate-y-1 transition-all flex items-center justify-center gap-3"
+          >
+             <LayoutGrid size={28} /> Multiplicar
           </button>
 
           <button 
