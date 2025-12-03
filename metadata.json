@@ -1,0 +1,5 @@
+{
+  "name": "MathMaster Kids: Sumas y Restas",
+  "description": "Una aplicación interactiva para que los niños practiquen sumas y restas de 5 cifras con llevadas, validando paso a paso.",
+  "requestFramePermissions": []
+}
